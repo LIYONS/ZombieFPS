@@ -16,10 +16,6 @@ namespace ZombieFPS.Camera
 
         private void Start()
         {
-            if(CameraService.Instance==null)
-            {
-                Debug.Log("Null");
-            }
             targetTransform = CameraService.Instance.PlayerTransform;
             Cursor.lockState = CursorLockMode.Locked;
         }
