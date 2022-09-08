@@ -723,7 +723,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4532053904779675848}
   - component: {fileID: 4532053904779675849}
-  - component: {fileID: 797089086343749339}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -765,18 +764,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.35, z: 0}
---- !u!114 &797089086343749339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508239727631907082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4fa8f01d10679a419c18a3ef44d322f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5108165432652536191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,8 +1111,6 @@ GameObject:
   - component: {fileID: 7354191888750609331}
   - component: {fileID: 7354191888750609330}
   - component: {fileID: 7354191888750609329}
-  - component: {fileID: 7354191888750609334}
-  - component: {fileID: 812215619}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1232,32 +1217,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &7354191888750609334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354191888750609341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3d1eca8e9128b448fe3c55af510653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 1000
-  maxRotationAngle: 90
---- !u!114 &812215619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354191888750609341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d43046cb5ef5a49a5d806e2ce19433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7399200959575078538
 GameObject:
   m_ObjectHideFlags: 0

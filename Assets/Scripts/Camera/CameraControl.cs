@@ -6,35 +6,37 @@ namespace ZombieFPS.Camera
     public class CameraControl : MonoBehaviour
     {
         [Header("General")]
-        [SerializeField] private float mouseSensitivity=1000f;
+        [SerializeField] private float mouseSensitivity;
         [SerializeField,Range(0,360)] private float maxRotationAngle=90f;
 
         private Transform targetTransform;
-        private float mouseInputX;
-        private float mouseInputY;
+        private float mouseInputX=0f;
+        private float mouseInputY=0f;
         private float xRotation=0f;
 
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            if(CameraService.Instance==null)
+            {
+                Debug.Log("Null");
+            }
             targetTransform = CameraService.Instance.PlayerTransform;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         private void Update()
         {
             HandleInput();
         }
 
+        private void FixedUpdate()
+        {
+            LookAtMouse();
+        }
         private void HandleInput()
         {
             mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             mouseInputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         }
-
-        private void FixedUpdate()
-        {
-            LookAtMouse();
-        }
-
         private void LookAtMouse()
         {
             xRotation -= mouseInputY;
