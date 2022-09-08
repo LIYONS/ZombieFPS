@@ -7,12 +7,12 @@ namespace ZombieFPS.Camera
     public class CameraService : MonoSIngletonGeneric<CameraService>
     {
         private PlayerService playerService;
-
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
             playerService = PlayerService.Instance;
         }
 
-        public Transform GetPlayerTransform { get { return playerService.GetPlayerTransform; } }
+        public Transform PlayerTransform { get { return playerService.PlayerTransform; } }
     }
 }

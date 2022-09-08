@@ -16,23 +16,34 @@ namespace ZombieFPS.Camera
 
         private void Start()
         {
-            targetTransform = CameraService.Instance.GetPlayerTransform;
             Cursor.lockState = CursorLockMode.Locked;
+            targetTransform = CameraService.Instance.PlayerTransform;
+        }
+        private void Update()
+        {
+            HandleInput();
         }
 
-        private void LateUpdate()
+        private void HandleInput()
+        {
+            mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            mouseInputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        }
+
+        private void FixedUpdate()
         {
             LookAtMouse();
         }
 
         private void LookAtMouse()
         {
-            mouseInputX = Input.GetAxis("Mouse X") * mouseSensitivity*Time.deltaTime;
-            mouseInputY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
             xRotation -= mouseInputY;
             xRotation = Mathf.Clamp( xRotation,-maxRotationAngle, maxRotationAngle);
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            targetTransform.Rotate(Vector3.up * mouseInputX);
+            if(targetTransform)
+            {
+                targetTransform.Rotate(Vector3.up * mouseInputX);
+            }
         }
     }
 }
