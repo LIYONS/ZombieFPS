@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToDeliver: 10
-  timeBtwAttack: 1
+  timeBtwAttack: 2
 --- !u!114 &7818262470292428892
 MonoBehaviour:
   m_ObjectHideFlags: 0

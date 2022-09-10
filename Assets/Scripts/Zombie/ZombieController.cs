@@ -27,29 +27,31 @@ namespace ZombieFPS.Enemy
         {
             attackTimer = timeBtwAttack;
             target = PlayerService.Instance.playerTransform;
+        }
+        private void Update()
+        {
             if (target)
             {
                 navAgent.SetDestination(target.position);
             }
-        }
-        private void Update()
-        {
             animationManager.SetVelocity(Mathf.Abs(navAgent.velocity.magnitude));
-            if(Vector3.Distance(transform.position,target.position)<2f && attackTimer<Time.time )
+            if(Vector3.Distance(transform.position,target.position)<2f &&!isAttacking )
             {
                 isAttacking = true;
-                Attack();
+                animationManager.SetCanAttack(true);
             }
             else if(Vector3.Distance(transform.position, target.position) > 2f && isAttacking)
             {
                 animationManager.SetCanAttack(false);
             }
+            if(isAttacking && attackTimer<Time.time)
+            {
+                Damage();
+            }
         }
-        private void Attack()
+        private void Damage()
         {
             attackTimer = Time.time + timeBtwAttack;
-            animationManager.SetCanAttack(true);
-            isAttacking = false; ;
         }
     }
 }
