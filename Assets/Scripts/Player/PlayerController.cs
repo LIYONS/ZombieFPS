@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieFPS.Services;
 
 namespace ZombieFPS.Player
 {
@@ -20,7 +21,10 @@ namespace ZombieFPS.Player
         {
             characterController = GetComponent<CharacterController>();
         }
-
+        private void OnEnable()
+        {
+            PlayerService.Instance.playerTransform = this.transform;
+        }
         private void Update()
         {
             movementDir = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
