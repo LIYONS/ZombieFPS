@@ -8,15 +8,14 @@ namespace ZombieFPS.Camera
         [Header("General")]
         [SerializeField] private float mouseSensitivity;
         [SerializeField,Range(0,360)] private float maxRotationAngle=90f;
+        [SerializeField] private Transform targetTransform;
 
-        private Transform targetTransform;
         private float mouseInputX=0f;
         private float mouseInputY=0f;
         private float xRotation=0f;
 
         private void Start()
         {
-            targetTransform = CameraService.Instance.PlayerTransform;
             Cursor.lockState = CursorLockMode.Locked;
         }
         private void Update()

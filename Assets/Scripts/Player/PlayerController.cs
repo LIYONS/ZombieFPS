@@ -9,17 +9,15 @@ namespace ZombieFPS.Player
     {
         [Header("Movement")]
         [SerializeField] private float movementSpeed;
-
+        [SerializeField] private float jumpHeight;
+        [SerializeField] private float gravity = -9.81f;
 
         private CharacterController characterController;
-        private float horizontal;
-        private float vertical;
         private Vector3 movementDir;
 
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
-            PlayerService.Instance.PlayerTransform = this.transform;
         }
 
         private void Update()
@@ -28,26 +26,27 @@ namespace ZombieFPS.Player
         }
         private void FixedUpdate()
         {
-            if (!characterController.isGrounded)
+            if(characterController.isGrounded && movementDir.y<0)
             {
-                GravityControl();
+                movementDir.y = 0;
             }
+            movementDir.y += gravity * Time.deltaTime;
             MoveMent();
         }
         private void HandleInput()
         {
-            vertical = Input.GetAxis("Vertical");
-            horizontal = Input.GetAxis("Horizontal");
+            movementDir = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
+            if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
+            {
+                Jump();
+            }
         }
-        private void  GravityControl()
+        private void Jump()
         {
-            Vector3 moveVector = Vector3.zero;
-            moveVector += Physics.gravity;
-            characterController.Move(moveVector*Time.fixedDeltaTime);
+            movementDir.y += Mathf.Sqrt(jumpHeight*-2f*gravity);
         }
         private void MoveMent()
         {
-            movementDir = transform.right * horizontal + transform.forward * vertical;
             characterController.Move(movementDir*movementSpeed*Time.fixedDeltaTime);
         }
     }
