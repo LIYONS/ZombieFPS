@@ -5,8 +5,9 @@ using ZombieFPS.Singleton;
 
 namespace ZombieFPS.Services
 {
-    public class PlayerService : MonoSIngletonGeneric<PlayerService>
+    public class PlayerService : MonoSingletonGeneric<PlayerService>
     {
         public Transform playerTransform { get; set; }
+
     }
 }

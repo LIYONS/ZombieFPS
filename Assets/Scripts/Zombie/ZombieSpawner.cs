@@ -4,34 +4,45 @@ namespace ZombieFPS.Enemy
 {
     public class ZombieSpawner : MonoBehaviour
     {
-        [SerializeField] private ZombieController zombiePreab;
+        [SerializeField] private ZombieController zombiePrefab;
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private int initialSpawns;
         [SerializeField] private int maxSpawns;
         [SerializeField] private float timeBtwAutoSpawn;
 
+        private ZombiePoolService zombiePool;
         private int spawnIndex;
         private int zombieCount;
         private float spawnTimer;
+        private int deadCount;
+
+        private void Awake()
+        {
+            zombiePool = GetComponent<ZombiePoolService>();
+        }
+
         private void Start()
         {
+            EventHandler.Instance.OnEnemyDead += ReduceZombieCount;
             for (int i = 0; i < initialSpawns; i++)
             {
                 SpawnZombie();
             }
+            deadCount = 0;
         }
+     
         private void Update()
         {
             if(spawnTimer<Time.time && zombieCount<maxSpawns)
             {
                 SpawnZombie();
-                spawnTimer += timeBtwAutoSpawn;
+                spawnTimer =Time.time+timeBtwAutoSpawn;
             }
         }
         private void SpawnZombie()
         {
             GenerateIndex();
-            Instantiate(zombiePreab, spawnPoints[spawnIndex].position, spawnPoints[spawnIndex].rotation);
+            zombiePool.GetZombie(zombiePrefab.gameObject, spawnPoints[spawnIndex]);
             zombieCount++;
         }
 
@@ -44,6 +55,22 @@ namespace ZombieFPS.Enemy
             }
             while (index == spawnIndex);
             spawnIndex = index;
+        }
+
+        private void ReduceZombieCount()
+        {
+            zombieCount--;
+            deadCount++;
+            SpawnZombie();
+            if(deadCount%5==0)
+            {
+                maxSpawns++;
+            }
+        }
+
+        private void OnDisable()
+        {
+            EventHandler.Instance.OnEnemyDead -= ReduceZombieCount;
         }
     }
 }
