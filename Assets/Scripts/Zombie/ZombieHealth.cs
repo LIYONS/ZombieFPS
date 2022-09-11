@@ -13,9 +13,8 @@ namespace ZombieFPS.Enemy
         {
             currentHealth = maxHealth;
         }
-        public void TakeDamage(float amount,Vector3 point)
+        public void TakeDamage(float amount)
         {
-            bloodPS.transform.position = point;
             bloodPS.Play();
             currentHealth -= amount;
             if(currentHealth<=0)
