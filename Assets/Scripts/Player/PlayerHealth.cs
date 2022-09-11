@@ -31,7 +31,7 @@ namespace ZombieFPS.Player
 
         private void Death()
         {
-            Debug.Log("Dead");
+            EventHandler.Instance.InvokeOnGameOver();
         }
     }
 }

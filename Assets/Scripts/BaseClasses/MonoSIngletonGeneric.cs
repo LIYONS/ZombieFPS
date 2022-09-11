@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZombieFPS.Singleton
 {
-    public class MonoSIngletonGeneric<T> : MonoBehaviour where T:MonoSIngletonGeneric<T>
+    public class MonoSingletonGeneric<T> : MonoBehaviour where T:MonoSingletonGeneric<T>
     {
         private static T instance;
 

@@ -26,7 +26,7 @@ namespace ZombieFPS.Enemy
             navAgent = GetComponent<NavMeshAgent>();
             animationManager = GetComponent<ZombieAnimationManager>();
         }
-        private void Start()
+        private void OnEnable()
         {
             attackTimer = timeBtwAttack;
             target = PlayerService.Instance.playerTransform;

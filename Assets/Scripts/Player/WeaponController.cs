@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZombieFPS.Enemy;
 
 namespace ZombieFPS
 {
@@ -28,7 +29,11 @@ namespace ZombieFPS
                 fireTimer = Time.time + timeBtwFire;
                 if(Physics.Raycast(mainCam.position,transform.forward,out rayCast,weaponRange,enemyLayer))
                 {
-                    Debug.Log("Hit");
+                    ZombieHealth zombieHealth= rayCast.transform.GetComponent<ZombieHealth>();
+                    if(zombieHealth)
+                    {
+                        zombieHealth.TakeDamage(weaponDamage);
+                    }
                 }
             }
         }
