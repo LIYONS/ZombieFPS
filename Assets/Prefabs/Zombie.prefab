@@ -2195,7 +2195,7 @@ PrefabInstance:
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
@@ -2205,22 +2205,22 @@ PrefabInstance:
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8242288904625249014, guid: 38edf2d1eba5e244ea745c98675ea3db,
         type: 3}
@@ -2236,6 +2236,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242288904625249015, guid: 38edf2d1eba5e244ea745c98675ea3db,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242288904625249015, guid: 38edf2d1eba5e244ea745c98675ea3db,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242288904625249015, guid: 38edf2d1eba5e244ea745c98675ea3db,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38edf2d1eba5e244ea745c98675ea3db, type: 3}
