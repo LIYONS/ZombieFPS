@@ -47,7 +47,7 @@ namespace ZombieFPS.Player
                     ZombieHealth zombieHealth= rayCast.transform.GetComponent<ZombieHealth>();
                     if(zombieHealth)
                     {
-                        zombieHealth.TakeDamage(weaponDamage);
+                        zombieHealth.TakeDamage(weaponDamage,rayCast.point);
                     }
                 }
                 Invoke(nameof(StopFireAnimation),.5f);
