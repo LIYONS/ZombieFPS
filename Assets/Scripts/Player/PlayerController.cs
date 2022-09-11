@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ZombieFPS.Services;
 
@@ -21,33 +18,30 @@ namespace ZombieFPS.Player
         {
             characterController = GetComponent<CharacterController>();
         }
+
         private void OnEnable()
         {
             PlayerService.Instance.playerTransform = this.transform;
         }
-        private void Update()
+
+        public void Movement(float horizontal,float vertical)
         {
-            movementDir = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-            if(Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
-            {
-                Jump();
-            }
-        }
-        private void FixedUpdate()
-        {
-            if(characterController.isGrounded && playerVelocity.y<0)
+            movementDir = transform.right * horizontal + transform.forward * vertical;
+            if (characterController.isGrounded && playerVelocity.y < 0)
             {
                 playerVelocity.y = 0;
             }
             characterController.Move(movementDir * movementSpeed * Time.fixedDeltaTime);
-            playerVelocity.y += gravity * Time.deltaTime ;
-
+            playerVelocity.y += gravity * Time.deltaTime;
             characterController.Move(playerVelocity * Time.deltaTime);
-
         }
-        private void Jump()
+
+        public void Jump()
         {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            if (characterController.isGrounded)
+            {
+                playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
         }
     }
 }
