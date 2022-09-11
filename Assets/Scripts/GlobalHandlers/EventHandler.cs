@@ -14,6 +14,8 @@ namespace ZombieFPS
 
         public event Action OnEnemyDead;
 
+        public event Action<float> OnPlayerTookDamage;
+
         public void InvokeOnGameOver()
         {
             OnGameOver?.Invoke();
@@ -27,6 +29,11 @@ namespace ZombieFPS
         public void InvokeOnEnemyDead()
         {
             OnEnemyDead?.Invoke();
+        }
+
+        public void InvokePlayerDamaged(float amount)
+        {
+            OnPlayerTookDamage?.Invoke(amount);
         }
     }
 }
