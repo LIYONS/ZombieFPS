@@ -14,6 +14,7 @@ namespace ZombieFPS.Enemy
         private int spawnIndex;
         private int zombieCount;
         private float spawnTimer;
+        private int deadCount;
 
         private void Awake()
         {
@@ -27,6 +28,7 @@ namespace ZombieFPS.Enemy
             {
                 SpawnZombie();
             }
+            deadCount = 0;
         }
      
         private void Update()
@@ -58,6 +60,12 @@ namespace ZombieFPS.Enemy
         private void ReduceZombieCount()
         {
             zombieCount--;
+            deadCount++;
+            SpawnZombie();
+            if(deadCount%5==0)
+            {
+                maxSpawns++;
+            }
         }
 
         private void OnDisable()
