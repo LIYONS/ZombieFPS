@@ -14,6 +14,9 @@ namespace ZombieFPS.Player
         [SerializeField] private float weaponRange;
         [SerializeField] private LayerMask enemyLayer;
         [SerializeField] private float fireAnimTime = 0.3f;
+        [Header("Audio")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip fireAudio;
 
         private PlayerAnimationManager playerAnimation;
         private float fireTimer;
@@ -38,6 +41,7 @@ namespace ZombieFPS.Player
         {
             if(fireTimer<Time.time)
             {
+                audioSource.PlayOneShot(fireAudio);
                 playerAnimation.SetIsFiring(true);
                 isFiring = true;
                 fireAnimTimer = Time.time + fireAnimTime;
