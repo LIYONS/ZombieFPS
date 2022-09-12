@@ -5,6 +5,7 @@ namespace ZombieFPS.Enemy
     public class ZombieHealth : MonoBehaviour
     {
         [SerializeField] private float maxHealth;
+        [SerializeField] ParticleSystem bloodPS;
 
         private float currentHealth;
 
@@ -14,6 +15,7 @@ namespace ZombieFPS.Enemy
         }
         public void TakeDamage(float amount)
         {
+            bloodPS.Play();
             currentHealth -= amount;
             if(currentHealth<=0)
             {

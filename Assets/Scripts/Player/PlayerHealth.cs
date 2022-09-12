@@ -26,6 +26,7 @@ namespace ZombieFPS.Player
                     isDead = true;
                     Death();
                 }
+                EventHandler.Instance.InvokePlayerDamaged(amount);
             }
         }
 

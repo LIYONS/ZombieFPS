@@ -28,15 +28,18 @@ namespace ZombieFPS.Enemy
         }
         private void OnEnable()
         {
-            attackTimer = timeBtwAttack;
+            attackTimer = timeBtwAttack;           
+        }
+        private void Start()
+        {
             target = PlayerService.Instance.playerTransform;
             playerHealth = target.GetComponent<PlayerHealth>();
         }
         private void Update()
         {
-            distanceToTarget = Vector3.Distance(transform.position, target.position);
             if (target)
             {
+                distanceToTarget = Vector3.Distance(transform.position, target.position);
                 navAgent.SetDestination(target.position);
             }
             animationManager.SetVelocity(Mathf.Abs(navAgent.velocity.magnitude));
