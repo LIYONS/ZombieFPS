@@ -19,6 +19,8 @@ namespace ZombieFPS.UI
         [Header("PlayerHealth")]
         [SerializeField] private Slider playerHealthSlider;
         [SerializeField] private TextMeshProUGUI healthTxt;
+        [SerializeField] private GameObject bloodPanel;
+        [SerializeField] private float bloodPanelActiveTime;
         [SerializeField] private Image sliderFillImg;
         [SerializeField] private float sliderShowTime;
         [SerializeField] private Color sliderStartColor = Color.green;
@@ -32,6 +34,7 @@ namespace ZombieFPS.UI
         private void Start()
         {
             killCount = 0;
+            bloodPanel.SetActive(false);
             pauseMenu.SetActive(false);
             gameOverMenu.SetActive(false);
             isPaused = false;
@@ -103,9 +106,18 @@ namespace ZombieFPS.UI
         }
         private void OnPlayerHealthChanged(float amount)
         {
-            playerHealthSlider.value -= amount;
+            if(amount>0f)
+            {
+                playerHealthSlider.value -= amount;
+                bloodPanel.SetActive(true);
+                Invoke(nameof(DisableBloodPanel),bloodPanelActiveTime);
+            }
             healthTxt.text = playerHealthSlider.value.ToString();
             sliderFillImg.color = Color.Lerp(sliderEndColor,sliderStartColor, playerHealthSlider.value/playerHealthSlider.maxValue);
+        }
+        private void DisableBloodPanel()
+        {
+            bloodPanel.SetActive(false);
         }
 
         private void OnDisable()
