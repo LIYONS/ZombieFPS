@@ -18,6 +18,7 @@ namespace ZombieFPS.UI
 
         [Header("PlayerHealth")]
         [SerializeField] private Slider playerHealthSlider;
+        [SerializeField] private TextMeshProUGUI healthTxt;
         [SerializeField] private Image sliderFillImg;
         [SerializeField] private float sliderShowTime;
         [SerializeField] private Color sliderStartColor = Color.green;
@@ -103,6 +104,7 @@ namespace ZombieFPS.UI
         private void OnPlayerHealthChanged(float amount)
         {
             playerHealthSlider.value -= amount;
+            healthTxt.text = playerHealthSlider.value.ToString();
             sliderFillImg.color = Color.Lerp(sliderEndColor,sliderStartColor, playerHealthSlider.value/playerHealthSlider.maxValue);
         }
 
