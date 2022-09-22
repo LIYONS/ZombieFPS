@@ -7,8 +7,8 @@ namespace ZombieFPS.Player
     {
         [Header("Movement")]
         [SerializeField] private float movementSpeed;
-        [SerializeField] private float jumpHeight;
-        [SerializeField] private float gravity = -9.81f;
+        [SerializeField] private float jumpForce;
+        [SerializeField] private float gravity;
 
         private CharacterController characterController;
         private Vector3 movementDir;
@@ -23,7 +23,7 @@ namespace ZombieFPS.Player
         {
             PlayerService.Instance.playerTransform = this.transform;
         }
-
+        
         public void Movement(float horizontal,float vertical)
         {
             movementDir = transform.right * horizontal + transform.forward * vertical;
@@ -40,7 +40,7 @@ namespace ZombieFPS.Player
         {
             if (characterController.isGrounded)
             {
-                playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                playerVelocity.y = jumpForce;
             }
         }
     }

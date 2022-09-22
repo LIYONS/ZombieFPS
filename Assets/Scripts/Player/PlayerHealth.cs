@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZombieFPS.Player
@@ -7,6 +5,8 @@ namespace ZombieFPS.Player
     public class PlayerHealth : MonoBehaviour
     {
         [SerializeField] private float maxHealth;
+        [SerializeField] private AudioSource hurtAudioSource;
+        [SerializeField] private AudioClip hurtAudio;
 
         private float currentHealth;
         private bool isDead;
@@ -20,6 +20,7 @@ namespace ZombieFPS.Player
         {
             if (!isDead)
             {
+                hurtAudioSource.PlayOneShot(hurtAudio);
                 currentHealth -= amount;
                 if (currentHealth <= 0)
                 {
