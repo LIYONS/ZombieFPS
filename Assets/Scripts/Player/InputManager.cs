@@ -7,8 +7,10 @@ namespace ZombieFPS.Player
         private PlayerController playerController;
         private WeaponController weaponController;
 
-        private float horizontal;
-        private float vertical;
+        public float Horizontal { get; private set; }
+        public float Vertical { get; private set; }
+        public float MouseX { get; private set; }
+        public float MouseY { get; private set; }
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
@@ -21,14 +23,12 @@ namespace ZombieFPS.Player
             JumpCheck();
             FireCheck();
         }
-        private void FixedUpdate()
-        {
-            playerController.Movement(horizontal, vertical);
-        }
         private void MovementCheck()
         {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
+            Horizontal = Input.GetAxis("Horizontal");
+            Vertical = Input.GetAxis("Vertical");
+            MouseX = Input.GetAxis("Mouse X");
+            MouseY = Input.GetAxis("Mouse Y");
         }
 
         private void JumpCheck()

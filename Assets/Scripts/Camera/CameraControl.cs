@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ZombieFPS.Camera
+namespace ZombieFPS
 {
     public class CameraControl : MonoBehaviour
     {
