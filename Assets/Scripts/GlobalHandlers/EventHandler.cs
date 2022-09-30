@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using ZombieFPS.Singleton;
 
 namespace ZombieFPS
@@ -16,6 +13,8 @@ namespace ZombieFPS
 
         public event Action<float> OnPlayerTookDamage;
 
+        public event Action OnGameResumed;
+
         public void InvokeOnGameOver()
         {
             OnGameOver?.Invoke();
@@ -26,6 +25,10 @@ namespace ZombieFPS
             OnGamePaused?.Invoke();
         }
 
+        public void InvokeOnGameResumed()
+        {
+            OnGameResumed?.Invoke();
+        }
         public void InvokeOnEnemyDead()
         {
             OnEnemyDead?.Invoke();

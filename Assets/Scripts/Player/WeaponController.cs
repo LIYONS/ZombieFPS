@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using ZombieFPS.Enemy;
 
@@ -23,6 +20,7 @@ namespace ZombieFPS.Player
         private RaycastHit rayCast;
         private float fireAnimTimer;
         private bool isFiring;
+        private bool isGamePaused;
 
         private void Start()
         {
@@ -39,7 +37,7 @@ namespace ZombieFPS.Player
         }
         public void Fire()
         {
-            if(fireTimer<Time.time)
+            if(fireTimer<Time.time && !isGamePaused)
             {
                 audioSource.PlayOneShot(fireAudio);
                 playerAnimation.SetIsFiring(true);
@@ -61,6 +59,15 @@ namespace ZombieFPS.Player
         private void StopFireAnimation()
         {
             playerAnimation.SetIsFiring(false);
+        }
+
+        private void OnGamePaused()
+        {
+            isGamePaused = true;
+        }
+        private void OnGameResumed()
+        {
+            isGamePaused = false;
         }
     }
 }

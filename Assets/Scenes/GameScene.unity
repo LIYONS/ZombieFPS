@@ -189,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefabs:
   - {fileID: 7818262470292428893, guid: fb8510fe03c87c44fbdbca3f4877f68d, type: 3}
+  - {fileID: 7818262470292428893, guid: 19801f0a55efe1e4180b24fa92f23224, type: 3}
+  - {fileID: 7818262470292428893, guid: 5a65ca1c2bceff2429733f435e32bddb, type: 3}
   spawnPoints:
   - {fileID: 1604962776}
   - {fileID: 673433772}
@@ -215,9 +217,9 @@ MonoBehaviour:
   - {fileID: 1475700886}
   - {fileID: 2098975029}
   - {fileID: 1975220209}
-  initialSpawns: 4
-  maxSpawns: 30
-  timeBtwAutoSpawn: 10
+  initialSpawns: 2
+  maxSpawns: 20
+  timeBtwAutoSpawn: 5
 --- !u!4 &122377719
 Transform:
   m_ObjectHideFlags: 0
@@ -7624,7 +7626,8 @@ MonoBehaviour:
   lowerLookLimit: 80
   fpsCharacter: {fileID: 2121305490145872284}
   bobSpeed: 14
-  bobAmount: 0.07
+  bobAmount: 0.06
+  musicAs: {fileID: 8524287350168277516}
 --- !u!143 &3374164262009530547
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7668,7 +7671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 8524287350168277514}
-  weaponDamage: 2
+  weaponDamage: 10
   timeBtwFire: 0.15
   weaponRange: 100
   enemyLayer:

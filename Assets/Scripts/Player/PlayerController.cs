@@ -20,6 +20,9 @@ namespace ZombieFPS.Player
         [SerializeField] private float bobSpeed; 
         [SerializeField] private float bobAmount;
 
+        [Header("Music")]
+        [SerializeField] private AudioSource musicAs;
+
         private CharacterController characterController;
         private InputManager inputManager;
         private Vector3 moveDirection;
@@ -28,6 +31,7 @@ namespace ZombieFPS.Player
         private float rotationX;
         private float defaultYPos;
         private float timer;
+        private bool isGamePaused;
 
         private void Awake()
         {
@@ -40,6 +44,8 @@ namespace ZombieFPS.Player
         private void OnEnable()
         {
             PlayerService.Instance.playerTransform = this.transform;
+            EventHandler.Instance.OnGamePaused += OnGamePaused;
+            EventHandler.Instance.OnGameResumed += OnGameResumed;
         }
         private void Update()
         {
@@ -59,10 +65,13 @@ namespace ZombieFPS.Player
 
         private void HandleCameraLook()
         {
-            rotationX -= inputManager.MouseY * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-            fpsCharacter.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
-            transform.Rotate(Vector3.up * inputManager.MouseX * lookSpeed);
+            if (!isGamePaused)
+            {
+                rotationX -= inputManager.MouseY * lookSpeed;
+                rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
+                fpsCharacter.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+                transform.Rotate(Vector3.up * inputManager.MouseX * lookSpeed);
+            }
         }
         private void HandleHeadbob()
         {
@@ -79,7 +88,7 @@ namespace ZombieFPS.Player
                     fpsCharacter.transform.localPosition.z
                     );
             }
-        }
+        } 
         public void Jump()
         {
             if(characterController.isGrounded)
@@ -90,11 +99,25 @@ namespace ZombieFPS.Player
 
         private void ApplyMovement()
         {
-            if(! characterController.isGrounded)
+            if (!isGamePaused)
             {
-                moveDirection.y -= gravity * Time.deltaTime;
+                if (!characterController.isGrounded)
+                {
+                    moveDirection.y -= gravity * Time.deltaTime;
+                }
+                characterController.Move(moveDirection * Time.deltaTime);
             }
-            characterController.Move(moveDirection * Time.deltaTime);
+        }
+
+        private void OnGamePaused()
+        {
+            isGamePaused = true;
+            musicAs.Stop();
+        }
+        private void OnGameResumed()
+        {
+            isGamePaused = false;
+            musicAs.Play();
         }
     }
 }

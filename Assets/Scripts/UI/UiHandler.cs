@@ -78,6 +78,7 @@ namespace ZombieFPS.UI
                 return;
             }
             isPaused = true;
+            eventHandler.InvokeOnGamePaused();
             pauseMenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
@@ -91,6 +92,7 @@ namespace ZombieFPS.UI
                 pauseMenu.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 isPaused = false;
+                eventHandler.InvokeOnGameResumed();
             }
         }
 
