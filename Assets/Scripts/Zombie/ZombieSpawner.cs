@@ -1,10 +1,9 @@
 using UnityEngine;
-
 namespace ZombieFPS.Enemy
 {
     public class ZombieSpawner : MonoBehaviour
     {
-        [SerializeField] private ZombieController zombiePrefab;
+        [SerializeField] private ZombieController[] zombiePrefabs;
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private int initialSpawns;
         [SerializeField] private int maxSpawns;
@@ -41,12 +40,13 @@ namespace ZombieFPS.Enemy
         }
         private void SpawnZombie()
         {
-            GenerateIndex();
-            zombiePool.GetZombie(zombiePrefab.gameObject, spawnPoints[spawnIndex]);
+            GenerateSpawnPointIndex();
+            int zombieIndex = Random.Range(0, zombiePrefabs.Length);
+            zombiePool.GetZombie(zombiePrefabs[zombieIndex].gameObject, spawnPoints[spawnIndex]);
             zombieCount++;
         }
 
-        private void GenerateIndex()
+        private void GenerateSpawnPointIndex()
         {
             int index;
             do

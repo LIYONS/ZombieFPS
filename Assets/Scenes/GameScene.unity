@@ -184,8 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed032efccac1d743b73fa8e562181c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 7818262470292428893, guid: fb8510fe03c87c44fbdbca3f4877f68d,
-    type: 3}
+  zombiePrefabs:
+  - {fileID: 7818262470292428893, guid: c41adc387178ef5489c7446b39bad49e, type: 3}
+  - {fileID: 7818262470292428893, guid: 9ce3d6ec2e546534b86fa95fee49efbf, type: 3}
+  - {fileID: 7818262470292428893, guid: 529ddb21bcd45d242a4612b5afc4b174, type: 3}
+  - {fileID: 7818262470292428893, guid: fb8510fe03c87c44fbdbca3f4877f68d, type: 3}
   spawnPoints:
   - {fileID: 1604962776}
   - {fileID: 673433772}
@@ -4134,8 +4137,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51bb06eeab3ce8e498e01df3860de979, type: 2}
-  m_sharedMaterial: {fileID: 5719061809746480066, guid: 51bb06eeab3ce8e498e01df3860de979,
+  m_fontAsset: {fileID: 11400000, guid: 854b662d1734eaf43b6f68066e3e7485, type: 2}
+  m_sharedMaterial: {fileID: 3944108987459374371, guid: 854b662d1734eaf43b6f68066e3e7485,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
