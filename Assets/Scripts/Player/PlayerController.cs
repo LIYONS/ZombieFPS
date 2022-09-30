@@ -58,7 +58,10 @@ namespace ZombieFPS.Player
         }
         public void Jump()
         {
-            
+            if(characterController.isGrounded)
+            {
+                moveDirection.y = jumpForce;
+            }
         }
 
         private void ApplyMovement()
