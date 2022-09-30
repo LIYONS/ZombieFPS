@@ -14,7 +14,11 @@ namespace ZombieFPS.Player
         [SerializeField, Range(1, 10)] private float lookSpeed;
         [SerializeField, Range(0, 180)] private float upperLookLimit;
         [SerializeField, Range(0, 180)] private float lowerLookLimit;
-        [SerializeField] private GameObject fpsCharacter;
+        [SerializeField] private Transform fpsCharacter;
+
+        [Header("Head Bob")]
+        [SerializeField] private float bobSpeed; 
+        [SerializeField] private float bobAmount;
 
         private CharacterController characterController;
         private InputManager inputManager;
@@ -22,11 +26,14 @@ namespace ZombieFPS.Player
         private Vector2 currentInput;
         private float moveDirectionY;
         private float rotationX;
+        private float defaultYPos;
+        private float timer;
 
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
             inputManager = GetComponent<InputManager>();
+            defaultYPos = fpsCharacter.transform.localPosition.y;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
@@ -38,6 +45,7 @@ namespace ZombieFPS.Player
         {
             HandleMovementInput();
             HandleCameraLook();
+            HandleHeadbob();
             ApplyMovement();
         }
 
@@ -53,8 +61,24 @@ namespace ZombieFPS.Player
         {
             rotationX -= inputManager.MouseY * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-            fpsCharacter.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+            fpsCharacter.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
             transform.Rotate(Vector3.up * inputManager.MouseX * lookSpeed);
+        }
+        private void HandleHeadbob()
+        {
+            if(!characterController.isGrounded)
+            {
+                return;
+            }
+            if(Mathf.Abs(moveDirection.x)>0.1f || Mathf.Abs(moveDirection.z)>0.1f)
+            {
+                timer += Time.deltaTime * bobSpeed;
+                fpsCharacter.transform.localPosition = new Vector3(
+                    fpsCharacter.transform.localPosition.x,
+                    defaultYPos+Mathf.Sin(timer)*bobAmount,
+                    fpsCharacter.transform.localPosition.z
+                    );
+            }
         }
         public void Jump()
         {

@@ -7616,13 +7616,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951d90484fa86054590e363444f345b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
+  walkSpeed: 5
   jumpForce: 8
   gravity: 30
   lookSpeed: 2
   upperLookLimit: 80
   lowerLookLimit: 80
-  fpsCharacter: {fileID: 3946741124400086583}
+  fpsCharacter: {fileID: 2121305490145872284}
+  bobSpeed: 14
+  bobAmount: 0.07
 --- !u!143 &3374164262009530547
 CharacterController:
   m_ObjectHideFlags: 0
