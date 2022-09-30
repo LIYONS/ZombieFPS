@@ -46,12 +46,12 @@ namespace ZombieFPS.Player
                 isFiring = true;
                 fireAnimTimer = Time.time + fireAnimTime;
                 fireTimer = Time.time + timeBtwFire;
-                if(Physics.Raycast(mainCam.position,transform.forward,out rayCast,weaponRange,enemyLayer))
+                if(Physics.Raycast(mainCam.position,mainCam.transform.forward,out rayCast,weaponRange,enemyLayer))
                 {
                     ZombieHealth zombieHealth= rayCast.transform.GetComponent<ZombieHealth>();
                     if(zombieHealth)
                     {
-                        zombieHealth.TakeDamage(weaponDamage);
+                        zombieHealth.TakeDamage(weaponDamage,rayCast.point);
                     }
                 }
                 Invoke(nameof(StopFireAnimation),.5f);

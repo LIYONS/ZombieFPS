@@ -185,9 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefabs:
-  - {fileID: 7818262470292428893, guid: c41adc387178ef5489c7446b39bad49e, type: 3}
-  - {fileID: 7818262470292428893, guid: 9ce3d6ec2e546534b86fa95fee49efbf, type: 3}
-  - {fileID: 7818262470292428893, guid: 529ddb21bcd45d242a4612b5afc4b174, type: 3}
   - {fileID: 7818262470292428893, guid: fb8510fe03c87c44fbdbca3f4877f68d, type: 3}
   spawnPoints:
   - {fileID: 1604962776}
@@ -199,8 +196,8 @@ MonoBehaviour:
   - {fileID: 802399924}
   - {fileID: 1974123648}
   initialSpawns: 2
-  maxSpawns: 30
-  timeBtwAutoSpawn: 10
+  maxSpawns: 4
+  timeBtwAutoSpawn: 5
 --- !u!4 &122377719
 Transform:
   m_ObjectHideFlags: 0
@@ -7015,7 +7012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3374164262009530544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -8.84}
+  m_LocalPosition: {x: 0, y: 1.5, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7104,7 +7101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 8524287350168277514}
-  weaponDamage: 20
+  weaponDamage: 2
   timeBtwFire: 0.15
   weaponRange: 100
   enemyLayer:
